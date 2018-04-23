@@ -1,0 +1,274 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+    <title>Texmo Industries</title>
+    <script type="text/javascript">
+        var GB_ROOT_DIR = "./includes/";
+    </script>
+    <link href="includes/inner.css" rel="stylesheet" type="text/css" />
+    <!--menu open-->
+    <link rel="stylesheet" type="text/css" href="includes/mlface.css">
+    <script type="text/javascript" src="js/mlmld.js"></script>
+    <!--menu end-->
+    <script type="text/javascript" src="includes/validate.js"></script>
+    <script type="text/javascript" language="javascript" src="address.js"></script>
+    <script type="text/javascript" src="includes/AJS.js"></script>
+    <script type="text/javascript" src="includes/AJS_fx.js"></script>
+    <script type="text/javascript" src="includes/gb_scripts.js"></script>
+    <link href="includes/gb_styles.css" rel="stylesheet" type="text/css" media="all" />
+    <script language="javascript">
+        function fnvalidate() {
+            if (isNull(document.enquiryform.txtname, "Name")) {
+                return false;
+            }
+            if (isNull(document.enquiryform.txtcname, "Company Name")) {
+                return false;
+            }
+            if (isNull(document.enquiryform.txtarea, "Address")) {
+                return false;
+            }
+            if (isNull(document.enquiryform.txtarea1, "Address1")) {
+                return false;
+            }
+            if (isNull(document.enquiryform.txtcity, "City")) {
+                return false;
+            }
+            if (isNull(document.enquiryform.txtzip, "Zip")) {
+                return false;
+            }
+            if (fnChkNum(document.enquiryform.txtzip, " Zip")) {
+                return false;
+            }
+            if (isNull(document.enquiryform.txtcountry, "Country")) {
+                return false;
+            }
+            if (isNull(document.enquiryform.txtphone, "Phone")) {
+                return false;
+            }
+            if (fnChkNum(document.enquiryform.txtphone, " Phone")) {
+                return false;
+            }
+            if (isNull(document.enquiryform.txtfax, "Fax")) {
+                return false;
+            }
+            if (fnChkNum(document.enquiryform.txtfax, " Fax")) {
+                return false;
+            }
+            if (isNull(document.enquiryform.txtmail, "E-Mail")) {
+                return false;
+            }
+            if (notEmail(document.enquiryform.txtmail, "E-Mail")) {
+                return false;
+            }
+            if (isNull(document.enquiryform.txtrequest, "Request Information")) {
+                return false;
+            }
+        }
+        function fnchange() {
+            document.getElementById("enq_table").style.display = "block";
+        }
+        function fnclose() {
+            document.getElementById("enq_table").style.display = "none";
+        }
+
+        
+         function popupwindow(url) {
+           window.open(url,'Testing','menubar=0,left=180,top=30,width=1000,height=750,resizable=0,scrollbars=1')
+        }
+          
+
+    </script>
+    <script language="JavaScript">
+
+        function fnChangefilter() {
+            document.thisForm.action = "contacts.html?statenum=" + document.thisForm.cmbState.value;
+            document.thisForm.submit();
+        }
+        /*function fnChange1(){
+ 
+        if(notSelected(document.thisForm.cmbState,"State")) { return false; }
+        document.thisForm.action="contacts.html?statenum="+document.thisForm.cmbState.value+"&citynum="+document.thisForm.cmbCity.value;
+        document.thisForm.submit();
+        }
+        */
+        function ajaxFun() {
+            var result;
+            var stateid;
+            f1 = document.thisForm;
+            stateid = document.thisForm.cmbState.value;
+            try {
+                ajaxRequest = new XMLHttpRequest();
+            } catch (e) {
+                try {
+                    ajaxRequest = new ActiveXObject("Msxml2.XMLHTTP");
+                } catch (e) {
+                    try {
+                        ajaxRequest = new ActiveXObject("Microsoft.XMLHTTP");
+                    } catch (e) {
+                        alert("Your browser does not support ajax!");
+                        return false;
+                    }
+                }
+            }
+            ajaxRequest.onreadystatechange = function () {
+                if (ajaxRequest.readyState == 4) {
+                    result = ajaxRequest.responseText;
+                    string1 = result.split("#");
+                    f1.cmbCity.length = 1;
+                    for (var i = 0; i < string1.length - 1; i++) {
+                        string2 = string1[i].split("_");
+                        newOption = document.createElement("OPTION");
+                        f1.cmbCity.options.add(newOption);
+                        newOption.text = string2[1];
+                        newOption.value = string2[0];
+                        //alert(f1.elements["partnerReligion[]"][i].value);
+                    }
+                }
+            }
+            ajaxRequest.open("GET", "test.php?action=GetState&stateid=" + stateid, true);
+            ajaxRequest.send(null);
+        }
+ 
+    </script>
+    <script type="text/javascript">
+
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-18572145-1']);
+        _gaq.push(['_trackPageview']);
+
+        (function () {
+            var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+        })();
+ 
+    </script>
+    
+    <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-99575322-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+    
+</head>
+<body>
+    <div id="main">
+        <div id="wrapper">
+            <div id="header">
+                <div id="logo_inner">
+                    <a href="index.html">
+                        <img src="images/logo.gif" border="0" title="Texmo Industries" /></a></div>
+                <div id="iso">
+                    <img src="images/iso_image.gif" title="Texmo Industries" /></div>
+            </div>
+            <!-- header end-->
+            <div id="about_us">
+                <div id="title_heading">
+                    <img src="images/contacts_title.gif" /></div>
+            </div>
+            <div id="content">
+                <div id="content_left">
+                    <div id="menu">
+                        <div style="height: 43px; z-index: 100px;">
+                            <ul class="mlddm" params="1,-1,500,slide,200,h" style="visibility: visible;">
+							<li><a href="index.html" title="Home" class="home"></a></li>
+							<li><a href="#" title="About Us" class="about"></a>
+							<ul style="margin: -45px 0px 0px 235px; clip: rect(90px, 1000px, 1000px, 0px); visibility: hidden;">
+							<li><a href="overview.html" class="overview"></a></li>
+							<li><a href="professional_mgt.html" class="professional"></a></li>
+							<li><a href="research.html" class="research"></a></li>
+							<li><a href="legacy.html" class="legacy"></a></li>
+							</ul>
+                                </li>
+                                <li><a href="#" title="Manufacturing Facilities" class="manu"></a>
+								<ul style="margin: -45px 0px 0px 235px; clip: rect(90px, 1000px, 1000px, 0px); visibility: hidden;">
+								<li><a href="plant.html" class="plant"></a></li>
+								<li><a href="people.html" class="people"></a></li>
+								</ul>
+								</li>
+                                <li><a href="#" title="Products" class="products"></a>
+								<ul style="margin: -45px 0px 0px 235px; clip: rect(90px, 1000px, 1000px, 0px); visibility: hidden;">
+								<li><a href="texmo.html" class="texmo_products"></a></li>
+								<li><a href="taro.html" class="taro_products"></a></li></ul>
+                                </li>
+                                <li><a href="carrers.html" title="Careers" class="careers"></a></li>
+                                <li><a href="contacts.html" title="Contacts" class="contact_act"></a></li>
+								<li><a title="Corporate Social Responsibility" href="plant.html" class="corporate"></a>
+								<ul style="margin: -45px 0px 0px 235px; clip: rect(90px, 1000px, 1000px, 0px); visibility: hidden;">
+								<li><a href="social_commitment.html" class="rgmt"></a></li>
+								<li><a href="tarogreen.html" class="tarogreen"></a></li>
+								<li><a href="missameal.html" class="miss" onclick="popupwindow('Miss_Img.html') "></a></li>
+								<li><a href="StarLogin.aspx" class="star"></a></li>
+								</ul>
+								</li>
+ <li><a title="Training" href="index.html" class="training" onclick="popupwindow('Training.html')"></a></li>
+								</ul>
+                        </div>
+                    </div>
+                    <!--<div id="taro_gif">
+    <object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=7,0,19,0" width="180" height="100">
+      <param name="movie" value="media/dealer.swf">
+      <param name="quality" value="high">
+      <embed src="media/dealer.swf" quality="high" pluginspage="http://www.macromedia.com/go/getflashplayer" type="application/x-shockwave-flash" width="180" height="100"></embed>
+    </object>
+  </div>-->
+                    <div id="flash_movie">
+                        <object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=7,0,19,0"
+                            width="190" height="155" title="products">
+                            <param name="movie" value="media/products.swf" />
+                            <param name="quality" value="high" />
+                            <param name="BGCOLOR" value="#000000" />
+                            <embed src="media/products.swf" width="190" height="155" quality="high" pluginspage="http://www.macromedia.com/go/getflashplayer"
+                                type="application/x-shockwave-flash" bgcolor="#000000"></embed>
+                        </object>
+                    </div>
+                    <!-- content left div end-->
+                </div>
+                <div id="content_right">
+                    <div style="padding: 0px 0px 0px 14px;">
+                        <img src="images/contact_banner.jpg" width="635" height="150" /></div>
+                    <div id="contentright_main">
+                      <div >
+                           <iframe scrolling="auto" runat="server" frameborder="0"  width="635px" height="400px" src="first1.aspx" style="background-color:Black"></iframe>
+                        </div>
+                        <!-- content_right div end-->
+                    </div>
+                    <!-- content div end-->
+                </div>
+                <!-- wrapper end-->
+            </div>
+        </div>
+        <div id="footermain">
+            <div id="main">
+                <div id="copyright">
+                    Copyright &copy; Texmo industries | All Rights Reserved</div>
+                <ul id="footerlinks">
+                    <li><a href="index.html">Home</a></li>
+                    <li><font color="#cc0000">|</font></li>
+                    <li><a href="overview.html">About Us</a></li>
+                    <li><font color="#cc0000">|</font></li>
+                    <li><a href="plant.html">Manufacturing Facilities</a></li>
+                    <li><font color="#cc0000">|</font></li>
+                    <li><a href="texmo.html">Products</a></li>
+                    <li><font color="#cc0000">|</font></li>
+                    <li><a href="carrers.html">Careers</a></li>
+                    <li><font color="#cc0000">|</font></li>
+                    <li><a href="contacts.html">Contacts</a></li>
+                    <li><font color="#cc0000">|</font></li>
+                    <li><a href="social_commitment.html">Corporate Social Responsibility</a></li>
+    <li><font color="#cc0000">|</font></li>
+<li><a title="Training" href="index.html" onclick="popupwindow('Training.html')">Training</a></li>
+                </ul>
+            </div>
+            <!-- footermain div end-->
+        </div>
+    </div>
+    <!----------------- Main div finished -------------------->
+</body>
+</html>
